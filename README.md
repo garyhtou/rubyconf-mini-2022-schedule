@@ -1,6 +1,6 @@
 # RubyConf Mini 2022 Schedule 🗓️
 
-Have you wished to have the RubyConf Mini schedule in your own calendar app? Well, now you can! Subscribe to the
+Do you wish to have the RubyConf Mini schedule in your own calendar app? Well, now you can! Subscribe to the
 [`https://rubyconfmini.garytou.com/calendar.ics`](https://rubyconfmini.garytou.com/calendar.ics) ICS link in your favorite
 calendar app such as Google Calendar, Apple Calendar, Outlook, etc.
 
