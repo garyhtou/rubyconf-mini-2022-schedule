@@ -9,15 +9,25 @@ as an iCal (ics) file!
 
 ## 📎 How to use
 
-| Google Calendar          | [Add to Google Calendar](https://calendar.google.com/calendar/render?cid=j4fl51nffh7vllo958sl3i8dp44s9qr9%40import.calendar.google.com) |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Apple Calendar on iPhone | [Add to Apple Calendar](https://rubyconfmini.garytou.com/calendar.ics)                                                                  |
-| Others                   | Subscribe to the `https://rubyconfmini.garytou.com/calendar.ics` calendar link in your favorite calendar app!                           |
+<table>
+<tr>
+	<td>Google Calendar</td>
+	<td><a href="https://calendar.google.com/calendar/render?cid=j4fl51nffh7vllo958sl3i8dp44s9qr9%40import.calendar.google.com">Add to Google Calendar</a></td>
+</tr>
+<tr>
+	<td>Apple Calendar on iPhone</td>
+	<td><a href="https://rubyconfmini.garytou.com/calendar.ics">Add to Apple Calendar</a></td>
+</tr>
+<tr>
+	<td>Others</td>
+	<td>Subscribe to the <code>https://rubyconfmini.garytou.com/calendar.ics</code> calendar link in your favorite calendar app!</td>
+</tr>
+</table>
 
 **Alternatively...**
 
 Hack with the event data! You can access a JSON version of all the event data at
-[`https://rubyconfmini.garytou.com/events`](https://rubyconfmini.garytou.com/events).
+[`https://rubyconfmini.garytou.com/events`](https://rubyconfmini.garytou.com/events). Go build something cool!
 
 ## 🏗️ Development
 
