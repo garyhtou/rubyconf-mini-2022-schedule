@@ -1,7 +1,7 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 import moment, { Moment } from 'moment-timezone';
-import 'css.escape';
+import cssEscape from 'css.escape';
 
 var lastScraped = 0;
 var cache: event[] = null;
@@ -115,8 +115,7 @@ async function parseItem(
 
 export async function getEventDescription($: cheerio.Root, url: string) {
 	try {
-		const anchor = CSS.escape(url.split('#')[1]);
-		console.log(anchor);
+		const anchor = cssEscape(url.split('#')[1]);
 
 		const description = $(`#${anchor} ~ p`).text().trim();
 		return description;
