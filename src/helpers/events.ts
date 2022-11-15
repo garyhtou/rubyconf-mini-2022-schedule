@@ -1,12 +1,14 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 import moment, { Moment } from 'moment-timezone';
+import 'css.escape';
 
 var lastScraped = 0;
 var cache: event[] = null;
 
 const BASE_URL = 'http://www.rubyconfmini.com';
 const SCHEDULE_URL = BASE_URL + '/schedule';
+const PROGRAM_URL = BASE_URL + '/program';
 export const ET_TZ = 'America/New_York';
 const DAYS = [
 	{ id: 'tuesday', date: moment.tz('2022-11-15', ET_TZ) },
@@ -21,8 +23,10 @@ export async function getEvents(force: boolean = false) {
 	}
 	console.log('Scrapping events');
 
-	const html = await getHtml();
+	const html = await getScheduleHtml();
 	const $ = cheerio.load(html);
+	const pHtml = await getProgramHtml();
+	const p$ = cheerio.load(pHtml);
 
 	const events: event[] = [];
 	for (const day of DAYS) {
@@ -30,7 +34,7 @@ export async function getEvents(force: boolean = false) {
 		const date = day.date;
 
 		const div = $(`#${dayId} + .schedule-day`);
-		const dayEvents = await parseDay($, date, div);
+		const dayEvents = await parseDay($, p$, date, div);
 		events.push(...dayEvents);
 	}
 
@@ -46,13 +50,18 @@ export async function getEvents(force: boolean = false) {
 	return events;
 }
 
-function parseDay($: cheerio.Root, date: Moment, dayHtml: cheerio.Cheerio) {
+async function parseDay(
+	$: cheerio.Root,
+	p$: cheerio.Root,
+	date: Moment,
+	dayHtml: cheerio.Cheerio
+) {
 	let events = [];
 	const scheduleItems = dayHtml.children();
 
 	for (let i = 0; i < scheduleItems.length; i++) {
 		try {
-			events.push(parseItem($, date, $(scheduleItems[i])));
+			events.push(await parseItem($, p$, date, $(scheduleItems[i])));
 		} catch (e) {
 			console.log(e);
 		}
@@ -61,7 +70,12 @@ function parseDay($: cheerio.Root, date: Moment, dayHtml: cheerio.Cheerio) {
 	return events;
 }
 
-function parseItem($: cheerio.Root, date: Moment, itemHtml: cheerio.Cheerio) {
+async function parseItem(
+	$: cheerio.Root,
+	p$: cheerio.Root,
+	date: Moment,
+	itemHtml: cheerio.Cheerio
+) {
 	const timeLocation = itemHtml.find('.schedule-item-time').text().split('•');
 	const times = timeLocation[0].split('-').map((s) => s.trim());
 	const location = timeLocation[1]?.trim() || undefined;
@@ -85,27 +99,49 @@ function parseItem($: cheerio.Root, date: Moment, itemHtml: cheerio.Cheerio) {
 	if (url) url = BASE_URL + url;
 	const authors = itemHtml.find('.speaker-names').text().trim() || null;
 
+	const description = url ? await getEventDescription(p$, url) : null;
+
 	const event: event = {
 		start,
 		end,
 		title,
 		location,
+		description,
 		url,
 		authors,
 	};
 	return event;
 }
 
+export async function getEventDescription($: cheerio.Root, url: string) {
+	try {
+		const anchor = CSS.escape(url.split('#')[1]);
+		console.log(anchor);
+
+		const description = $(`#${anchor} ~ p`).text().trim();
+		return description;
+	} catch (e) {
+		console.log(e);
+		return null;
+	}
+}
+
 export type event = {
 	start: Moment;
 	end: Moment;
 	title: string;
+	description?: string;
 	url?: string;
 	authors?: string;
 	location?: string;
 };
 
-async function getHtml() {
+async function getScheduleHtml() {
 	const res = await axios.get(SCHEDULE_URL);
+	return await res.data;
+}
+
+async function getProgramHtml() {
+	const res = await axios.get(PROGRAM_URL);
 	return await res.data;
 }
