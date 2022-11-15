@@ -9,9 +9,15 @@ as an iCal (ics) file!
 
 ## 📎 How to use
 
-| [`/calendar.ics`](https://rubyconfmini.garytou.com/calendar.ics) | iCal (ics) file of events (for subscription in calendar apps) |
-| ---------------------------------------------------------------- | ------------------------------------------------------------- |
-| [`/events`](https://rubyconfmini.garytou.com/events)             | JSON endpoint of events                                       |
+| Google Calendar          | [Add to Google Calendar](https://calendar.google.com/calendar/render?cid=j4fl51nffh7vllo958sl3i8dp44s9qr9%40import.calendar.google.com) |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Apple Calendar on iPhone | [Add to Apple Calendar](https://rubyconfmini.garytou.com/calendar.ics)                                                                  |
+| Others                   | Subscribe to the `https://rubyconfmini.garytou.com/calendar.ics` calendar link in your favorite calendar app!                           |
+
+**Alternatively...**
+
+Hack with the event data! You can access a JSON version of all the event data at
+[`https://rubyconfmini.garytou.com/events`](https://rubyconfmini.garytou.com/events).
 
 ## 🏗️ Development
 
