@@ -1,9 +1,9 @@
 {
-	"name": "railsconf-2022-schedule-ics",
+	"name": "rubyconf-mini-2022-schedule-ics",
 	"version": "1.0.0",
-	"description": "Web Scrapes RailsConf 2022 Schedule to create an ICS link",
+	"description": "Web scrapes the RubyConf Mini 2022 schedule and creates an ICS link",
 	"author": "Gary Tou <gary@garytou.com> (https://garytou.com)",
-	"repository": "https://github.com/garyhtou/railsconf-2022-schedule",
+	"repository": "https://github.com/garyhtou/rubyconf-mini-2022-schedule",
 	"main": "dist/index.js",
 	"scripts": {
 		"start": "npm run build && ts-node .",

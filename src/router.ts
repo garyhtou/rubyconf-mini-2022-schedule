@@ -14,14 +14,14 @@ router.get('/ping', (req: Request, res: Response) => {
 	res.send('pong! 🏓');
 });
 
-const REPO_URL = 'https://github.com/garyhtou/railsconf-2022-schedule';
+const REPO_URL = 'https://github.com/garyhtou/rubyconf-mini-2022-schedule';
 router.get('/', (req: Request, res: Response) => {
 	res.redirect(REPO_URL);
 });
 
 router.get('/calendar.ics', async (req: Request, res: Response) => {
 	const calendar: ICalCalendar = await getCalendar();
-	calendar.serve(res, 'RailsConf2022.ics');
+	calendar.serve(res, 'RubyConfMini2022.ics');
 });
 
 router.get('/events', async (req: Request, res: Response) => {
