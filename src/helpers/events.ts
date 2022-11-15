@@ -115,9 +115,12 @@ async function parseItem(
 
 export async function getEventDescription($: cheerio.Root, url: string) {
 	try {
-		const anchor = cssesc(url.split('#')[1]);
+		const anchor = url.split('#')[1];
 
-		const description = $(`#${anchor} ~ p`).text().trim();
+		if (!anchor) return null;
+		const escaped = cssesc(anchor, { isIdentifier: true });
+
+		const description = $(`#${escaped} ~ p`)?.text()?.trim();
 		return description;
 	} catch (e) {
 		console.log(e);
