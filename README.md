@@ -20,7 +20,7 @@ as an iCal (ics) file!
 </tr>
 <tr>
 	<td>Others</td>
-	<td>Subscribe to the <code>https://rubyconfmini.garytou.com/calendar.ics</code> calendar link in your favorite calendar app!</td>
+	<td>Copy this link: <code>https://rubyconfmini.garytou.com/calendar.ics</code>, and subscribe to it in your favorite calendar app!</td>
 </tr>
 </table>
 
