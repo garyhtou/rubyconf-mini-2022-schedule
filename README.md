@@ -4,6 +4,8 @@ Do you wish to have the RubyConf Mini schedule in your own calendar app? Well, n
 [`https://rubyconfmini.garytou.com/calendar.ics`](https://rubyconfmini.garytou.com/calendar.ics) ICS link in your favorite
 calendar app such as Google Calendar, Apple Calendar, Outlook, etc.
 
+![image](https://user-images.githubusercontent.com/20099646/202037106-2f8b4ea1-7e77-4e3e-99d5-1d18f816f590.png)
+
 This `node.js` app (really should be Ruby 🙄) web scrapes the RubyConf Mini schedule from their website and formats it
 as an iCal (ics) file!
 
